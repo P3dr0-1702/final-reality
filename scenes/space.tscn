@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://djuek6kech5fc"]
+[gd_scene load_steps=9 format=4 uid="uid://djuek6kech5fc"]
 
 [ext_resource type="Texture2D" uid="uid://bff7lntyg3fax" path="res://assets/Space.png" id="1_c6rj5"]
 [ext_resource type="PackedScene" uid="uid://d1llk7thvj8al" path="res://scenes/Player.tscn" id="2_dtwn4"]
 [ext_resource type="PackedScene" uid="uid://cvr4156f6e2ce" path="res://scenes/asteroid.tscn" id="3_dtwn4"]
+[ext_resource type="PackedScene" uid="uid://bk7g63u2340e4" path="res://scenes/enemy.tscn" id="4_x2olr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2olr"]
 texture = ExtResource("1_c6rj5")
@@ -26,7 +27,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAADA/9T/AQAAAAAAAAAAAL//AQAAAAA
 tile_set = SubResource("TileSet_1gvwg")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_dtwn4")]
-position = Vector2(1, 0)
+position = Vector2(102, 64)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2, 2)
@@ -35,8 +36,6 @@ zoom = Vector2(2, 2)
 
 [node name="RigidBody2D" parent="Asteroids" instance=ExtResource("3_dtwn4")]
 position = Vector2(137, -70)
-mass = 2.786
-linear_velocity = Vector2(-20, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroids/RigidBody2D"]
 position = Vector2(1, -2)
@@ -48,3 +47,7 @@ position = Vector2(99, -50)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroids/Asteroid"]
 position = Vector2(1, -3)
 shape = SubResource("CapsuleShape2D_dtwn4")
+
+[node name="enemy" parent="." instance=ExtResource("4_x2olr")]
+position = Vector2(6, 40)
+collision_layer = 1
