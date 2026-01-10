@@ -35,8 +35,6 @@ zoom = Vector2(2, 2)
 
 [node name="RigidBody2D" parent="Asteroids" instance=ExtResource("3_dtwn4")]
 position = Vector2(137, -70)
-mass = 2.786
-linear_velocity = Vector2(-20, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroids/RigidBody2D"]
 position = Vector2(1, -2)
