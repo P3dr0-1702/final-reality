@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvr4156f6e2ce"]
+
+[ext_resource type="Texture2D" uid="uid://d3tcyxqej7cmp" path="res://assets/Asteroid1.png" id="1_6mo6b"]
+[ext_resource type="Texture2D" uid="uid://d4mh2g6a82msc" path="res://assets/Asteroid2.png" id="2_t4se3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mo6b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6mo6b")
+}],
+"loop": true,
+"name": &"Asteroid1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t4se3")
+}],
+"loop": true,
+"name": &"Asteroid2",
+"speed": 5.0
+}]
+
+[node name="Asteroid" type="RigidBody2D"]
+disable_mode = 2
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_6mo6b")
+gravity_scale = 0.0
+can_sleep = false
+freeze_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6mo6b")
+animation = &"Asteroid1"
