@@ -34,3 +34,7 @@ func _on_timer_timeout() -> void:
 	var direction = Vector2.RIGHT.rotated(rotation).normalized()
 	var ship_velocity = velocity
 	bullet_spawn.initialize(direction, ship_velocity * 2)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	queue_free()
