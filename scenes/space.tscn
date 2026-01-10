@@ -29,6 +29,7 @@ tile_set = SubResource("TileSet_1gvwg")
 position = Vector2(1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(2, 2)
 
 [node name="Asteroids" type="Node" parent="."]
 

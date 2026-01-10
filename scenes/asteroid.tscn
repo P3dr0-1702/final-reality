@@ -1,37 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvr4156f6e2ce"]
+[gd_scene load_steps=3 format=3 uid="uid://cvr4156f6e2ce"]
 
 [ext_resource type="Texture2D" uid="uid://d3tcyxqej7cmp" path="res://assets/Asteroid1.png" id="1_6mo6b"]
 [ext_resource type="Texture2D" uid="uid://d4mh2g6a82msc" path="res://assets/Asteroid2.png" id="2_t4se3"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mo6b"]
+[node name="Asteroids" type="Node2D"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_6mo6b")
-}],
-"loop": true,
-"name": &"Asteroid1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_t4se3")
-}],
-"loop": true,
-"name": &"Asteroid2",
-"speed": 5.0
-}]
+[node name="Asteroid1" type="RigidBody2D" parent="."]
 
-[node name="Asteroid" type="RigidBody2D"]
-disable_mode = 2
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_6mo6b")
-gravity_scale = 0.0
-can_sleep = false
-freeze_mode = 1
+[node name="Sprite2D" type="Sprite2D" parent="Asteroid1"]
+texture = ExtResource("1_6mo6b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6mo6b")
-animation = &"Asteroid1"
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Asteroid1"]
+polygon = PackedVector2Array(7, -14, 14, -7, 14, 1, 13, 1, 12, 2, 12, 4, 10, 6, 8, 6, 5, 7, 2, 8, 0, 9, 0, 10, -2, 10, -3, 8, -8, 3, -12, -1, -12, -9, -7, -13, 0, -13)
+
+[node name="Asteroid2" type="RigidBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Asteroid2"]
+position = Vector2(32, -1)
+texture = ExtResource("2_t4se3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Asteroid2"]
+polygon = PackedVector2Array(25, 0, 26, -3, 29, -5, 32, -6, 34, -7, 36, -7, 37, -5, 39, -3, 39, 0, 35, 4, 31, 5, 28, 5, 26, 2)
