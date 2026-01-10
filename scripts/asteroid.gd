@@ -13,7 +13,7 @@ extends RigidBody2D
 	$Asteroid7
 ]
 
-func setuo(asteroid_type: int, start_pos: Vector2, velocity: Vector2) -> void:
+func setup(asteroid_type: int, start_pos: Vector2, velocity: Vector2) -> void:
 	position = start_pos
 	speed = velocity
 	
