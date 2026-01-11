@@ -42,20 +42,6 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-<<<<<<< HEAD
-offset_left = -565.0
-offset_top = -236.0
-offset_right = -473.0
-offset_bottom = -204.66663
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(3, 3)
-
-[node name="background" parent="." instance=ExtResource("7_ocmas")]
-z_index = -1
-position = Vector2(-4613, 18042.996)
-scale = Vector2(25, 25)
-=======
 offset_left = -469.0
 offset_top = -67.0
 offset_right = -398.0
@@ -66,4 +52,3 @@ scale = Vector2(3, 3)
 text = "🦆🦆🦆🦆"
 label_settings = SubResource("LabelSettings_gk1qj")
 metadata/_edit_use_anchors_ = true
->>>>>>> origin/daniel
