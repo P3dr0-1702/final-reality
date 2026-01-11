@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var bullet = preload("res://scenes/Bullet.tscn")
 @export var asteroid_scene: PackedScene = preload("res://scenes/asteroid.tscn")
 @export var spawn_max_radius : float = 1000
 @export var player: Node2D
@@ -16,11 +17,8 @@ extends Node2D
 @export var hj_th: float = 100.0
 @export var hj_gain: float = 50.0
 @export var hj_loss: float = 15.0
-@export var level: int = 1
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@export var level: int = 0
 @onready var char: CharacterBody2D = $player
-
-
 var _spawn_timer : float = 0.0
 var player_speed: int = 0
 
@@ -86,3 +84,15 @@ func update_hj_drive(delta: float) -> void:
 	hj_drive = clamp(hj_drive, 0.0, hj_goal)
 	if hj_drive > hj_goal:
 		level_up()
+
+func reset_game():
+	player.global_position = Vector2(0,0)
+	player.velocity.x = 0.0
+	player.velocity.y = 0.0
+	for asteroid in asteroids.duplicate():
+		asteroid.queue_free()
+	level = 0
+	hj_drive = 0
+	hj_goal = 100.0
+	char.death.died = false
+	$player/AnimatedSprite2D.play("Default")

@@ -7,6 +7,7 @@ const SPEED = 200.0
 @export var ACCEL: float = 600.0
 @onready var player: CharacterBody2D = $"../player"
 var flag = 0
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _physics_process(delta: float) -> void:
 	look_at(player.global_position)
