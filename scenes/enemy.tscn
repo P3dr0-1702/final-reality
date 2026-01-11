@@ -23,7 +23,7 @@ sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"Default"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-16, -16, 32, 32)

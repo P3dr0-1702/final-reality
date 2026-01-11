@@ -37,3 +37,18 @@ position = Vector2(4, 3.0000012)
 [node name="enemy" parent="." instance=ExtResource("4_x2olr")]
 position = Vector2(1224, 414)
 rotation = 1.5707964
+
+[node name="enemy2" parent="." instance=ExtResource("4_x2olr")]
+position = Vector2(186, 449)
+
+[node name="enemy3" parent="." instance=ExtResource("4_x2olr")]
+position = Vector2(2045, 770)
+
+[node name="enemy4" parent="." instance=ExtResource("4_x2olr")]
+position = Vector2(2139, 100)
+
+[node name="enemy5" parent="." instance=ExtResource("4_x2olr")]
+position = Vector2(1988, -359)
+
+[node name="enemy6" parent="." instance=ExtResource("4_x2olr")]
+position = Vector2(1158, -621)

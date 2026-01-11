@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var recoil_strength = 100
+var recoil_strength = 75
 var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
 
@@ -24,6 +24,9 @@ func shoot():
 func fire():
 	print("Shoot")
 	var bullet_spawn = scene.instantiate()
+	bullet_spawn.collision_layer = 1
+	bullet_spawn.collision_mask = 0
+	bullet_spawn.add_to_group("player_bullet")
 	get_tree().current_scene.add_child(bullet_spawn)  
 	#add_child(bullet_spawn)
 	bullet_spawn.rotation = rotation

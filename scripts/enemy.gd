@@ -23,6 +23,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_timer_timeout() -> void:
 	var bullet_spawn = bullet.instantiate()
+	bullet_spawn.collision_layer = 2
+	bullet_spawn.collision_mask = 2
 	get_tree().current_scene.add_child(bullet_spawn)
 	bullet_spawn.rotation = rotation
 	if flag == 1:
