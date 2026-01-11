@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var recoil_strength = 30
+var recoil_strength = 75
 var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
 @onready var death: Area2D = $death

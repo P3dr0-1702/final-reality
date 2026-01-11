@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://djuek6kech5fc"]
+[gd_scene load_steps=7 format=3 uid="uid://djuek6kech5fc"]
+
 [ext_resource type="Script" uid="uid://42hnlyi8x3yt" path="res://scripts/level1.gd" id="1_dtwn4"]
 [ext_resource type="PackedScene" uid="uid://d1llk7thvj8al" path="res://scenes/Player.tscn" id="2_dtwn4"]
-[ext_resource type="Script" uid="uid://wkyt0shhnc58" path="res://scripts/ui.gd" id="6_n0118"]
+[ext_resource type="Script" uid="uid://klpjqu4ws73t" path="res://scripts/enemyspawn.gd" id="5_1gvwg"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="6_n0118"]
 [ext_resource type="AudioStream" uid="uid://dyxcsvl1ho8as" path="res://assets/music/Yippe BIts v3.wav" id="6_ocmas"]
-[ext_resource type="PackedScene" uid="uid://dcs40c4vfwvl8" path="res://scenes/background.tscn" id="7_ocmas"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gk1qj"]
-font = ExtResource("7_ocmas")
 
 [node name="Space" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_dtwn4")
@@ -24,6 +24,7 @@ rotation = -1.5707964
 stream = ExtResource("6_ocmas")
 volume_db = 10.0
 autoplay = true
+
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -52,3 +53,6 @@ scale = Vector2(3, 3)
 text = "🦆🦆🦆🦆"
 label_settings = SubResource("LabelSettings_gk1qj")
 metadata/_edit_use_anchors_ = true
+
+[node name="enemyspawn" type="Node2D" parent="."]
+script = ExtResource("5_1gvwg")
