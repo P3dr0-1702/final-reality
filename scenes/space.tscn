@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://djuek6kech5fc"]
+[gd_scene load_steps=12 format=4 uid="uid://djuek6kech5fc"]
 
 [ext_resource type="Texture2D" uid="uid://bff7lntyg3fax" path="res://assets/Space.png" id="1_c6rj5"]
 [ext_resource type="Script" uid="uid://42hnlyi8x3yt" path="res://scripts/level1.gd" id="1_dtwn4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddjjq7nedne3w" path="res://assets/Space2.png" id="2_x2olr"]
 [ext_resource type="PackedScene" uid="uid://bk7g63u2340e4" path="res://scenes/enemy.tscn" id="4_x2olr"]
 [ext_resource type="Script" uid="uid://wkyt0shhnc58" path="res://scripts/ui.gd" id="6_n0118"]
+[ext_resource type="FontFile" uid="uid://b4tysvt0fce7u" path="res://assets/PixelOperator8.ttf" id="7_ocmas"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gvwg"]
 texture = ExtResource("2_x2olr")
@@ -21,6 +22,9 @@ texture = ExtResource("1_c6rj5")
 sources/1 = SubResource("TileSetAtlasSource_x2olr")
 sources/0 = SubResource("TileSetAtlasSource_1gvwg")
 
+[sub_resource type="LabelSettings" id="LabelSettings_gk1qj"]
+font = ExtResource("7_ocmas")
+
 [node name="Space" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_dtwn4")
 player = NodePath("player")
@@ -30,13 +34,13 @@ tile_map_data = PackedByteArray("AAAEAPj/AAAAAAAAAABkABgAAQAAAAAAAACEALj/AAAAAAA
 tile_set = SubResource("TileSet_1gvwg")
 
 [node name="player" parent="." instance=ExtResource("2_dtwn4")]
-position = Vector2(736, 141)
+position = Vector2(960, 537)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(4, 3.0000012)
 
 [node name="enemy" parent="." instance=ExtResource("4_x2olr")]
-position = Vector2(1224, 414)
+position = Vector2(995.99994, 368)
 rotation = 1.5707964
 
 [node name="ui" type="Control" parent="."]
@@ -47,6 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_n0118")
+metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ui"]
 
@@ -56,10 +61,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -322.0
-offset_top = -71.0
-offset_right = -251.0
-offset_bottom = -48.0
+offset_left = -469.0
+offset_top = -67.0
+offset_right = -398.0
+offset_bottom = -44.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(3, 3)
+text = "🦆🦆🦆🦆"
+label_settings = SubResource("LabelSettings_gk1qj")
+metadata/_edit_use_anchors_ = true
