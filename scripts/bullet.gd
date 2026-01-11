@@ -1,11 +1,10 @@
 extends RigidBody2D
 
+var speed = 300
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func initialize(direction: Vector2, ship_velocity: Vector2):
+	var ship_speed = ship_velocity.length()
+	var	total_speed = speed +    ship_speed
+	linear_velocity = direction.normalized() * total_speed
+	print("Bullet_speed ", round(total_speed))
+	print(round(linear_velocity.x), " | ", round(linear_velocity.y))

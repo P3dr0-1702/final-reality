@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1llk7thvj8al"]
+[gd_scene load_steps=5 format=3 uid="uid://d1llk7thvj8al"]
 
 [ext_resource type="Script" uid="uid://c4bb451lxx4op" path="res://scripts/player_move.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://cj16q0w6djmhd" path="res://assets/Space Ship.png" id="2_3li8b"]
+[ext_resource type="PackedScene" uid="uid://cdd1hci8wjlwa" path="res://scenes/death.tscn" id="3_3li8b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qu4a1"]
 animations = [{
@@ -14,7 +15,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 rotation = 1.5707964
 script = ExtResource("1_v6fml")
 
@@ -22,5 +23,7 @@ script = ExtResource("1_v6fml")
 sprite_frames = SubResource("SpriteFrames_qu4a1")
 animation = &"Default"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="death" parent="." instance=ExtResource("3_3li8b")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="death"]
 polygon = PackedVector2Array(0, -4, 3, 2, 10, 2, 3, 5, 5, 12, 0, 7, -5, 12, -3, 5, -10, 2, -3, 2)
