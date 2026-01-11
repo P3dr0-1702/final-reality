@@ -6,7 +6,7 @@ extends Node2D
 @export var player: Node2D
 @export var target_radius: float = 200
 @export var spawn_min_radius: float = 700
-@export var speed_multiplier: int = 500
+@export var speed_multiplier: int = 250
 @export var speed_range: int = 100
 @export var asteroids = []
 @export var target_asteroids_near_player: int = 100

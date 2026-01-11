@@ -9,7 +9,6 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_gk1qj"]
 font = ExtResource("5_1gvwg")
-
 [node name="Space" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_dtwn4")
 player = NodePath("player")

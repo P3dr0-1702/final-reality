@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var enemy_scene: PackedScene
 @onready var timer: Timer = $Timer
 @onready var bullet = preload("res://scenes/Bullet.tscn")
 
@@ -38,6 +39,10 @@ func _on_timer_timeout() -> void:
 	var ship_velocity = velocity
 	bullet_spawn.initialize(direction, ship_velocity * 2)
 
+func spawn_enemy(position: Vector2) -> void:
+	var enemy_instance = enemy_scene.instantiate()
+	enemy_instance.position = position
+	get_tree().current_scene.add_child(enemy_instance)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	queue_free()
