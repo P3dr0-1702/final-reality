@@ -1,5 +1,4 @@
 extends RigidBody2D
-
 var speed = 300
 
 func initialize(direction: Vector2, ship_velocity: Vector2):
