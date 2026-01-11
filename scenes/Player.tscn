@@ -114,8 +114,6 @@ animations = [{
 
 [node name="player" type="CharacterBody2D"]
 rotation = 1.5707964
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_v6fml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -134,3 +132,5 @@ position = Vector2(-13.000001, -10)
 
 [node name="r_wing" type="Marker2D" parent="."]
 position = Vector2(12.999999, -10.000001)
+
+[connection signal="area_entered" from="death" to="death" method="_on_area_entered"]

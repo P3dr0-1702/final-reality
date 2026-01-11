@@ -14,3 +14,12 @@ func _on_body_entered(body):
 
 func _on_timer_timeout() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if died == true:
+		return
+	died = true
+	animated_sprite_2d.play("Death")
+	print("you died lol")
+	timer.start()

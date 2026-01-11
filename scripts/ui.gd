@@ -6,4 +6,4 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
-	label.text = "Velocity " + str(floor(player.velocity.length())) + "\n" + "Level: " + str(space.level)
+	label.text = "Velocity " + str(floor(int(player.velocity.length()))) + "\n" + "Level: " + str(space.level) + "\n" + str(floor(int(space.hj_drive))) + "%"
