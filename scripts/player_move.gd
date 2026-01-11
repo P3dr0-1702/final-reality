@@ -1,13 +1,10 @@
 extends CharacterBody2D
 @onready var space: Node2D = $".."
 
-var recoil_strength = 50
+var recoil_strength = 75
 var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
-<<<<<<< HEAD
-=======
 @onready var asteroid = preload("res://scenes/asteroid.tscn")
->>>>>>> origin/pedro
 @onready var death: Area2D = $death
 
 
@@ -36,8 +33,8 @@ func shoot():
 
 func fire():
 	var bullet_spawn = scene.instantiate()
-	bullet_spawn.collision_layer = 1
-	bullet_spawn.collision_mask = 1
+	bullet_spawn.collision_layer = 2 
+	bullet_spawn.collision_mask = 2
 	bullet_spawn.add_to_group("player_bullet")
 	get_tree().current_scene.add_child(bullet_spawn)  
 	#add_child(bullet_spawn)
@@ -51,4 +48,4 @@ func fire():
 	
 	var direction = Vector2.UP.rotated(rotation).normalized()
 	var ship_velocity = velocity
-	bullet_spawn.initialize(direction, ship_velocity)
+	bullet_spawn.initialize(direction, ship_velocity * 2)

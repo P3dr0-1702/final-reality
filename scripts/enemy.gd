@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var enemy_scene: PackedScene
 @onready var timer: Timer = $Timer
-@onready var bullet = preload("res://scenes/Bullet.tscn")
+@onready var bullet = preload("res://scenes/Enemy_Bullet.tscn")
 
 const SPEED = 200.0
 @export var ACCEL: float = 600.0
@@ -25,8 +25,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_timer_timeout() -> void:
 	var bullet_spawn = bullet.instantiate()
-	bullet_spawn.collision_layer = 2
-	bullet_spawn.collision_mask = 2
+	bullet_spawn.collision_layer = 1
+	bullet_spawn.collision_mask = 1
 	get_tree().current_scene.add_child(bullet_spawn)
 	bullet_spawn.rotation = rotation
 	if flag == 1:
@@ -39,10 +39,13 @@ func _on_timer_timeout() -> void:
 	var ship_velocity = velocity
 	bullet_spawn.initialize(direction, ship_velocity * 2)
 
-func spawn_enemy(position: Vector2) -> void:
-	var enemy_instance = enemy_scene.instantiate()
-	enemy_instance.position = position
-	get_tree().current_scene.add_child(enemy_instance)
+#func spawn_enemy(position: Vector2) -> void:
+#	var enemy_instance = enemy_scene.instantiate()
+#	enemy_instance.position = position
+#	get_tree().current_scene.add_child(enemy_instance)
+func spawn(pos: Vector2):
+	position = pos
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	queue_free()
