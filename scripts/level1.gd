@@ -16,9 +16,8 @@ extends Node2D
 @export var hj_th: float = 100.0
 @export var hj_gain: float = 50.0
 @export var hj_loss: float = 15.0
-@export var level: int = 1
+@export var level: int = 0
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
 @onready var char: CharacterBody2D = $player
 
 
@@ -88,5 +87,14 @@ func update_hj_drive(delta: float) -> void:
 	if hj_drive >= hj_goal:
 		level_up()
 
-# func reset_game():
-	
+func reset_game():
+	player.global_position = Vector2(0,0)
+	player.velocity.x = 0.0
+	player.velocity.y = 0.0
+	for asteroid in asteroids.duplicate():
+		asteroid.queue_free()
+	level = 0
+	hj_drive = 0
+	hj_goal = 100.0
+	char.death.died = false
+	$player/AnimatedSprite2D.play("Default")

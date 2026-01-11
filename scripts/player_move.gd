@@ -1,6 +1,7 @@
 extends CharacterBody2D
+@onready var space: Node2D = $".."
 
-var recoil_strength = 30
+var recoil_strength = 50
 var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
 
@@ -21,9 +22,8 @@ func _input(event: InputEvent) -> void:
 		shoot()
 	if Input.is_action_just_pressed("shoot"):
 		fire()
-
-#	if Input.is_action_just_pressed("restart"):
-#		reset_game()
+	if Input.is_action_just_pressed("restart"):
+		space.reset_game()
 
 
 func shoot():

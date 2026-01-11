@@ -3,6 +3,7 @@ extends Area2D
 @export var died = false
 @onready var timer = $Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var space: Node2D = $"../.."
 
 func _on_body_entered(body):
 	if died == true:
@@ -13,4 +14,4 @@ func _on_body_entered(body):
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	space.reset_game()
