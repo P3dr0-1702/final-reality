@@ -5,7 +5,6 @@ var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
 @onready var death: Area2D = $death
 
-@onready var death: Area2D = $death
 
 func _physics_process(delta: float) -> void:
 	if death.died:
