@@ -4,6 +4,10 @@ extends CharacterBody2D
 var recoil_strength = 50
 var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
+<<<<<<< HEAD
+=======
+@onready var asteroid = preload("res://scenes/asteroid.tscn")
+>>>>>>> origin/pedro
 @onready var death: Area2D = $death
 
 

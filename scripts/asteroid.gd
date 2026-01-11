@@ -1,21 +1,21 @@
 extends RigidBody2D
 
 @export var speed: Vector2 = Vector2.ZERO
-
+@onready var bullet = preload("res://scenes/Bullet.tscn")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collisions := [
-	$Asteroid1,
-	$Asteroid2,
-	$Asteroid3,
-	$Asteroid4,
-	$Asteroid5,
-	$Asteroid6,
-	$Asteroid7,
-	$Asteroid8,
-	$Asteroid9,
-	$Asteroid10,
-	$Asteroid11,
-	$Asteroid12
+	$Area2D/Asteroid1,
+	$Area2D/Asteroid2,
+	$Area2D/Asteroid3,
+	$Area2D/Asteroid4,
+	$Area2D/Asteroid5,
+	$Area2D/Asteroid6,
+	$Area2D/Asteroid7,
+	$Area2D/Asteroid8,
+	$Area2D/Asteroid9,
+	$Area2D/Asteroid10,
+	$Area2D/Asteroid11,
+	$Area2D/Asteroid12
 ]
 
 func destroy():
@@ -36,3 +36,7 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	position += speed * delta
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	queue_free()

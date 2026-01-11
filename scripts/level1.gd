@@ -18,6 +18,7 @@ extends Node2D
 @export var hj_gain: float = 50.0
 @export var hj_loss: float = 15.0
 @export var level: int = 0
+
 @onready var char: CharacterBody2D = $player
 var _spawn_timer : float = 0.0
 var player_speed: int = 0
@@ -71,12 +72,13 @@ func level_up():
 	speed_multiplier += 15
 	hj_goal += 20
 	hj_gain += 2
-	print("Level Up!!!")
 
 func update_hj_drive(delta: float) -> void:
 	if not player.has_method("linear_velocity"):
 		return
 	var player_velo = char.velocity.length()
+	if(player.death.died):
+		return
 	if player_velo >= hj_th:
 		hj_drive += hj_gain * delta
 	else:
