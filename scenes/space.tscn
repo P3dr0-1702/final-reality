@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://djuek6kech5fc"]
+[gd_scene load_steps=8 format=3 uid="uid://djuek6kech5fc"]
 
 [ext_resource type="Script" uid="uid://42hnlyi8x3yt" path="res://scripts/level1.gd" id="1_dtwn4"]
 [ext_resource type="PackedScene" uid="uid://d1llk7thvj8al" path="res://scenes/Player.tscn" id="2_dtwn4"]
 [ext_resource type="FontFile" uid="uid://b4tysvt0fce7u" path="res://assets/PixelOperator8.ttf" id="5_1gvwg"]
+[ext_resource type="PackedScene" uid="uid://bk7g63u2340e4" path="res://scenes/enemy.tscn" id="6_gk1qj"]
 [ext_resource type="Script" uid="uid://wkyt0shhnc58" path="res://scripts/ui.gd" id="6_n0118"]
 [ext_resource type="AudioStream" uid="uid://dyxcsvl1ho8as" path="res://assets/music/Yippe BIts v3.wav" id="6_ocmas"]
 
@@ -54,3 +55,6 @@ scale = Vector2(3, 3)
 text = "🦆🦆🦆🦆"
 label_settings = SubResource("LabelSettings_gk1qj")
 metadata/_edit_use_anchors_ = true
+
+[node name="enemy" parent="." instance=ExtResource("6_gk1qj")]
+position = Vector2(1098, 785)

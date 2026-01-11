@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var bullet = preload("res://scenes/Bullet.tscn")
 @export var asteroid_scene: PackedScene = preload("res://scenes/asteroid.tscn")
 @export var spawn_max_radius : float = 1000
 @export var player: Node2D
@@ -17,10 +18,7 @@ extends Node2D
 @export var hj_gain: float = 50.0
 @export var hj_loss: float = 15.0
 @export var level: int = 0
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var char: CharacterBody2D = $player
-
-
 var _spawn_timer : float = 0.0
 var player_speed: int = 0
 
