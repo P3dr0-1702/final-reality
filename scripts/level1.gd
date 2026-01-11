@@ -18,7 +18,6 @@ extends Node2D
 @export var hj_loss: float = 15.0
 @export var level: int = 1
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
 @onready var char: CharacterBody2D = $player
 
 
@@ -66,27 +65,24 @@ func _process(delta: float) -> void:
 		spawn_asteroid()
 		_spawn_timer = spawn_cooldown
 
-
 func level_up():
 	level += 1
 	hj_drive = 0.0
-	
-	target_asteroids_near_player += 100
-	speed_multiplier += 100
+
+	target_asteroids_near_player += 5
+	speed_multiplier += 15
 	hj_goal += 20
 	hj_gain += 2
 	print("Level Up!!!")
-	print(level)
 
 func update_hj_drive(delta: float) -> void:
+	if not player.has_method("linear_velocity"):
+		return
 	var player_velo = char.velocity.length()
-	if player_velo <= hj_th:
+	if player_velo >= hj_th:
 		hj_drive += hj_gain * delta
 	else:
 		hj_drive -= hj_loss * delta
 	hj_drive = clamp(hj_drive, 0.0, hj_goal)
-	if hj_drive >= hj_goal:
+	if hj_drive > hj_goal:
 		level_up()
-
-# func reset_game():
-	
