@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var recoil_strength = 100
-
+var flag = 1
+@onready var scene = preload("res://scenes/Bullet.tscn")
 
 func _physics_process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
@@ -11,8 +12,28 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("fire"):
 		shoot()
-
+		print("Ship_speed: (", round(velocity.x), ", ", round(velocity.y), ")")
+	if Input.is_action_just_pressed("shoot"):
+		fire() 
+		
 func shoot():
-	print("FIRE!")
+	print("Move!")
 	var recoil_dir = -Vector2.DOWN.rotated(rotation)
 	velocity += recoil_dir * recoil_strength
+
+func fire():
+	print("Shoot")
+	var bullet_spawn = scene.instantiate()
+	get_tree().current_scene.add_child(bullet_spawn)  
+	#add_child(bullet_spawn)
+	bullet_spawn.rotation = rotation
+	if flag == 1:
+		bullet_spawn.global_position = $l_wing.global_position
+		flag = 0
+	else:
+		bullet_spawn.global_position = $r_wing.global_position
+		flag = 1
+	
+	var direction = Vector2.UP.rotated(rotation).normalized()
+	var ship_velocity = velocity
+	bullet_spawn.initialize(direction, ship_velocity)
