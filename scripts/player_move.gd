@@ -1,7 +1,8 @@
 extends CharacterBody2D
-var recoil_strength = 100
+var recoil_strength = 10000000
 var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
+@onready var space: Node2D = $".."
 
 func _physics_process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
@@ -14,7 +15,9 @@ func _input(event: InputEvent) -> void:
 		shoot()
 		print("Ship_speed: (", round(velocity.x), ", ", round(velocity.y), ")")
 	if Input.is_action_just_pressed("shoot"):
-		fire() 
+		fire()
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 		
 func shoot():
 	print("Move!")
