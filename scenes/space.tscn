@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://42hnlyi8x3yt" path="res://scripts/level1.gd" id="1_dtwn4"]
 [ext_resource type="PackedScene" uid="uid://d1llk7thvj8al" path="res://scenes/Player.tscn" id="2_dtwn4"]
 [ext_resource type="Texture2D" uid="uid://ddjjq7nedne3w" path="res://assets/Space2.png" id="2_x2olr"]
-[ext_resource type="PackedScene" uid="uid://bk7g63u2340e4" path="res://scenes/enemy.tscn" id="4_x2olr"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="6_n0118"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gvwg"]
 texture = ExtResource("2_x2olr")
@@ -34,6 +34,27 @@ position = Vector2(736, 141)
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(4, 3.0000012)
 
-[node name="enemy" parent="." instance=ExtResource("4_x2olr")]
-position = Vector2(1224, 414)
-rotation = 1.5707964
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_n0118")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ui"]
+
+[node name="Label" type="Label" parent="ui/CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -71.0
+offset_right = -251.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)

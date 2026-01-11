@@ -17,17 +17,16 @@ func _input(event: InputEvent) -> void:
 		return
 	if Input.is_action_just_pressed("fire"):
 		shoot()
-		print("Ship_speed: (", round(velocity.x), ", ", round(velocity.y), ")")
 	if Input.is_action_just_pressed("shoot"):
-		fire() 
+		fire()
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 		
 func shoot():
-	print("Move!")
 	var recoil_dir = -Vector2.DOWN.rotated(rotation)
 	velocity += recoil_dir * recoil_strength
 
 func fire():
-	print("Shoot")
 	var bullet_spawn = scene.instantiate()
 	get_tree().current_scene.add_child(bullet_spawn)  
 	#add_child(bullet_spawn)
