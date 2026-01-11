@@ -1,12 +1,14 @@
 extends Area2D
 
+@export var died = false
 @onready var timer = $Timer
-var died = false
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 func _on_body_entered(body):
 	if died == true:
 		return
 	died = true
+	animated_sprite_2d.play("Death")
 	print("you died lol")
 	timer.start()
 

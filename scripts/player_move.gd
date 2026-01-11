@@ -1,15 +1,20 @@
 extends CharacterBody2D
-var recoil_strength = 100
+var recoil_strength = 60
 var flag = 1
 @onready var scene = preload("res://scenes/Bullet.tscn")
+@onready var death: Area2D = $death
 
 func _physics_process(delta: float) -> void:
+	if death.died:
+		return
 	var mouse_pos = get_global_mouse_position()
 	look_at(mouse_pos)
 	rotation += deg_to_rad(-90)
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
+	if death.died:
+		return
 	if Input.is_action_just_pressed("fire"):
 		shoot()
 		print("Ship_speed: (", round(velocity.x), ", ", round(velocity.y), ")")
