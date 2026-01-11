@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://djuek6kech5fc"]
+[gd_scene load_steps=9 format=4 uid="uid://djuek6kech5fc"]
 
 [ext_resource type="Texture2D" uid="uid://bff7lntyg3fax" path="res://assets/Space.png" id="1_c6rj5"]
 [ext_resource type="Script" uid="uid://42hnlyi8x3yt" path="res://scripts/level1.gd" id="1_dtwn4"]
 [ext_resource type="PackedScene" uid="uid://d1llk7thvj8al" path="res://scenes/Player.tscn" id="2_dtwn4"]
+[ext_resource type="Texture2D" uid="uid://ddjjq7nedne3w" path="res://assets/Space2.png" id="2_x2olr"]
 [ext_resource type="PackedScene" uid="uid://bk7g63u2340e4" path="res://scenes/enemy.tscn" id="4_x2olr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gvwg"]
+texture = ExtResource("2_x2olr")
+0:0/size_in_atlas = Vector2i(128, 128)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2olr"]
 texture = ExtResource("1_c6rj5")
@@ -12,19 +18,22 @@ texture = ExtResource("1_c6rj5")
 
 [sub_resource type="TileSet" id="TileSet_1gvwg"]
 sources/1 = SubResource("TileSetAtlasSource_x2olr")
+sources/0 = SubResource("TileSetAtlasSource_1gvwg")
 
-[node name="Space" type="Node2D"]
+[node name="Space" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_dtwn4")
+player = NodePath("player")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAADA/9T/AQAAAAAAAAAAAL//AQAAAAAAAABAACkAAQAAAAAAAABAAOn/AQAAAAAAAADA/xMAAQAAAAAAAAAAAD8AAQAAAAAAAABAAKn/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAPj/AAAAAAAAAABkABgAAQAAAAAAAACEALj/AAAAAAAAAADDADcAAAAAAAAAAABDAHgAAAAAAAAAAADk/1cAAQAAAAAAAAAlAJj/AQAAAAAAAADkANf/AQAAAAAAAACjAJcAAQAAAAAAAADjAJYAAQAAAAAAAADk/5cAAQAAAAAAAADl/5j/AQAAAAAAAADkAJj/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_1gvwg")
 
 [node name="player" parent="." instance=ExtResource("2_dtwn4")]
-position = Vector2(-80, -54)
+position = Vector2(736, 141)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-zoom = Vector2(2, 2)
+position = Vector2(4, 3.0000012)
 
 [node name="enemy" parent="." instance=ExtResource("4_x2olr")]
-position = Vector2(85, -17)
+position = Vector2(1224, 414)
+rotation = 1.5707964

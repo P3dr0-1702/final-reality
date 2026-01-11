@@ -1,12 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvr4156f6e2ce"]
+[gd_scene load_steps=15 format=3 uid="uid://cvr4156f6e2ce"]
 
 [ext_resource type="Texture2D" uid="uid://d3tcyxqej7cmp" path="res://assets/Asteroids/Asteroid1.png" id="1_6mo6b"]
+[ext_resource type="Script" uid="uid://chaskh2h4b53b" path="res://scripts/asteroid.gd" id="1_x1lus"]
 [ext_resource type="Texture2D" uid="uid://d4mh2g6a82msc" path="res://assets/Asteroids/Asteroid2.png" id="2_t4se3"]
+[ext_resource type="Texture2D" uid="uid://c02vq8fwyqidm" path="res://assets/Asteroids/Asteroid10.png" id="3_2wa65"]
 [ext_resource type="Texture2D" uid="uid://c24j413snsccu" path="res://assets/Asteroids/Asteroid3.png" id="3_kkwpv"]
+[ext_resource type="Texture2D" uid="uid://baquw8bx2gct8" path="res://assets/Asteroids/Asteroid11.png" id="4_ug8x5"]
 [ext_resource type="Texture2D" uid="uid://dmef1ysiaia42" path="res://assets/Asteroids/Asteroid4.png" id="4_x1lus"]
 [ext_resource type="Texture2D" uid="uid://bi8kkd7x5b7up" path="res://assets/Asteroids/Asteroid5.png" id="5_71tyo"]
+[ext_resource type="Texture2D" uid="uid://ckw2ai1url1ul" path="res://assets/Asteroids/Asteroid12.png" id="5_foul2"]
 [ext_resource type="Texture2D" uid="uid://dpyqkmvxoqokp" path="res://assets/Asteroids/Asteroid6.png" id="6_jm418"]
 [ext_resource type="Texture2D" uid="uid://bbu7fkivvk5l" path="res://assets/Asteroids/Asteroid7.png" id="7_osw8w"]
+[ext_resource type="Texture2D" uid="uid://cyv4nwtg3n654" path="res://assets/Asteroids/Asteroid9.png" id="12_e1oj2"]
+[ext_resource type="Texture2D" uid="uid://bkvkg17ehngc8" path="res://assets/Asteroids/Asteroid8.png" id="12_ug8x5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
@@ -16,6 +22,30 @@ animations = [{
 }],
 "loop": true,
 "name": &"Asteroid1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2wa65")
+}],
+"loop": true,
+"name": &"Asteroid10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ug8x5")
+}],
+"loop": true,
+"name": &"Asteroid11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_foul2")
+}],
+"loop": true,
+"name": &"Asteroid12",
 "speed": 5.0
 }, {
 "frames": [{
@@ -65,23 +95,39 @@ animations = [{
 "loop": true,
 "name": &"Asteroid7",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ug8x5")
+}],
+"loop": true,
+"name": &"Asteroid8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_e1oj2")
+}],
+"loop": true,
+"name": &"Asteroid9",
+"speed": 5.0
 }]
 
 [node name="Asteroids" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_x1lus")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6mo6b")
-animation = &"Asteroid4"
+animation = &"Asteroid8"
 
 [node name="Asteroid1" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(0, -13, 4, -14, 8, -13, 13, -8, 14, -6, 14, 1, 9, 6, 5, 7, 1, 8, -1, 10, -4, 7, -12, -1, -12, -8, -6, -13)
-disabled = true
 
 [node name="Asteroid2" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(-2, -4, 1, -6, 4, -5, 6, -3, 7, -1, 6, 2, 4, 5, 1, 5, -2, 6, -6, 3, -7, 0, -6, -2, -3, -4)
-disabled = true
 
 [node name="Asteroid3" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -90,19 +136,35 @@ polygon = PackedVector2Array(0, -15, 3, -14, 10, -13, 16, -8, 16, 4, 12, 8, 9, 9
 [node name="Asteroid4" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(4, -10, 8, -8, 8, -6, 12, -4, 12, 2, 11, 3, 6, 9, 4, 11, 3, 12, 1, 12, 0, 11, -1, 11, -2, 12, -7, 12, -8, 11, -12, 10, -14, 8, -14, 6, -11, 3, -6, 3, 0, -3, 0, -8, 1, -8)
-disabled = true
 
-[node name="Asteriod5" type="CollisionPolygon2D" parent="."]
+[node name="Asteroid5" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(0, -3, 2, -4, 4, -3, 6, -1, 6, 1, 5, 3, 3, 7, 0, 7, -3, 5, -6, 2, -6, 0, -3, -3)
-disabled = true
 
 [node name="Asteroid6" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(0, -14, 5, -14, 9, -17, 14, -17, 15, -16, 17, -15, 21, -11, 23, -8, 23, -3, 21, 0, 18, 3, 17, 5, 17, 6, 17, 7, 20, 11, 20, 13, 18, 16, 15, 18, 11, 19, 7, 20, 5, 22, 3, 23, -1, 26, -3, 26, -4, 25, -6, 25, -8, 26, -11, 25, -14, 23, -16, 22, -20, 19, -21, 15, -23, 12, -23, 8, -24, 5, -23, 3, -23, 2, -24, 0, -22, -4, -20, -7, -17, -11, -11, -14, -9, -15, -5, -15, -2, -15)
-disabled = true
 
 [node name="Asteroid7" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(0, -6, 2, -4, 4, -3, 6, -1, 6, 2, 8, 4, 8, 5, 5, 8, 2, 6, -5, 5, -7, 3, -7, 1, -8, 0, -8, -1, -2, -6)
-disabled = true
+
+[node name="Asteroid8" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(10, -52, 29, -53, 38, -53, 47, -51, 55, -47, 61, -40, 64, -34, 64, -30, 60, -23, 56, -17, 50, -13, 45, -9, 40, -7, 40, -5, 41, 1, 41, 9, 40, 11, 40, 21, 39, 23, 39, 27, 36, 33, 32, 42, 26, 49, 24, 49, 18, 53, 10, 53, 5, 51, 0, 49, -2, 47, -5, 44, -10, 38, -14, 33, -19, 24, -20, 16, -21, 8, -19, -3, -16, -12, -16, -13, -22, -16, -33, -25, -41, -33, -45, -37, -41, -41, -18, -47, 0, -50)
+
+[node name="Asteroid9" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, -14, -6, -15, -12, -17, -14, -19, -12, -22, -12, -24, -15, -24, -14, -27, -15, -29, -17, -30, -19, -30, -22, -27, -20, -25, -19, -22, -26, -22, -29, -19, -29, -16, -30, -13, -26, -8, -26, -6, -30, -3, -30, 0, -31, 6, -30, 13, -26, 17, -24, 17, -22, 19, -20, 19, -18, 21, -14, 21, -11, 19, -9, 19, -8, 22, -6, 22, -3, 25, -1, 26, 1, 26, 4, 24, 4, 19, 7, 16, 8, 14, 10, 12, 16, 12, 18, 9, 22, 5, 23, 4, 23, 1, 21, -1, 20, -5, 19, -6, 18, -12, 14, -16, 2, -16)
+
+[node name="Asteroid10" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-13, -60, 0, -57, 9, -52, 17, -37, 32, -31, 42, -21, 47, -4, 41, 14, 26, 25, 16, 27, 9, 26, 6, 30, -1, 36, -11, 40, -16, 42, -20, 42, -28, 40, -35, 37, -41, 31, -46, 26, -49, 20, -51, 13, -51, 7, -48, -2, -44, -9, -40, -13, -40, -14, -43, -20, -43, -23, -44, -29, -43, -33, -41, -40, -33, -51, -23, -58)
+
+[node name="Asteroid11" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, -15, 10, -12, 20, -3, 28, -2, 40, 3, 47, 10, 48, 13, 52, 26, 44, 31, 29, 35, 13, 36, 0, 37, -15, 36, -26, 35, -46, 31, -54, 26, -48, 12, -43, 5, -35, 1, -20, -3, -16, -8, -9, -13)
+
+[node name="Asteroid12" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(2, -60, 25, -60, 25, -56, 28, -52, 32, -49, 36, -45, 40, -44, 40, -29, 55, -20, 55, -17, 49, -10, 28, -10, 28, -7, 36, -7, 36, -3, 44, 8, 44, 20, 36, 32, 28, 35, 21, 39, 13, 43, 13, 51, -10, 51, -10, 47, -21, 39, -33, 35, -44, 24, -48, 9, -52, 7, -52, -22, -44, -18, -34, -9, -25, -7, -12, -7, -6, -10, -6, -14, -14, -21, -14, -42, 1, -56)

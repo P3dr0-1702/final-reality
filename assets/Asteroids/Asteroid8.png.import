@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyv4nwtg3n654"
-path="res://.godot/imported/Asteroid9.png-91672fbda0d4fc9c2f70b64331124437.ctex"
+uid="uid://bkvkg17ehngc8"
+path="res://.godot/imported/Asteroid8.png-163835d0bc95b0b6a118f00b895b96e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Asteroids/Asteroid9.png"
-dest_files=["res://.godot/imported/Asteroid9.png-91672fbda0d4fc9c2f70b64331124437.ctex"]
+source_file="res://assets/Asteroids/Asteroid8.png"
+dest_files=["res://.godot/imported/Asteroid8.png-163835d0bc95b0b6a118f00b895b96e4.ctex"]
 
 [params]
 
