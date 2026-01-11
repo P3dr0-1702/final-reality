@@ -1,38 +1,27 @@
-[gd_scene load_steps=9 format=4 uid="uid://djuek6kech5fc"]
+[gd_scene load_steps=6 format=3 uid="uid://djuek6kech5fc"]
 
-[ext_resource type="Texture2D" uid="uid://bff7lntyg3fax" path="res://assets/Space.png" id="1_c6rj5"]
 [ext_resource type="Script" uid="uid://42hnlyi8x3yt" path="res://scripts/level1.gd" id="1_dtwn4"]
 [ext_resource type="PackedScene" uid="uid://d1llk7thvj8al" path="res://scenes/Player.tscn" id="2_dtwn4"]
-[ext_resource type="Texture2D" uid="uid://ddjjq7nedne3w" path="res://assets/Space2.png" id="2_x2olr"]
-[ext_resource type="Script" path="res://scripts/ui.gd" id="6_n0118"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gvwg"]
-texture = ExtResource("2_x2olr")
-0:0/size_in_atlas = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2olr"]
-texture = ExtResource("1_c6rj5")
-0:0/size_in_atlas = Vector2i(64, 64)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_1gvwg"]
-sources/1 = SubResource("TileSetAtlasSource_x2olr")
-sources/0 = SubResource("TileSetAtlasSource_1gvwg")
+[ext_resource type="Script" uid="uid://wkyt0shhnc58" path="res://scripts/ui.gd" id="6_n0118"]
+[ext_resource type="AudioStream" uid="uid://dyxcsvl1ho8as" path="res://assets/music/Yippe BIts v3.wav" id="6_ocmas"]
+[ext_resource type="PackedScene" uid="uid://dcs40c4vfwvl8" path="res://scenes/background.tscn" id="7_ocmas"]
 
 [node name="Space" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_dtwn4")
 player = NodePath("player")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAEAPj/AAAAAAAAAABkABgAAQAAAAAAAACEALj/AAAAAAAAAADDADcAAAAAAAAAAABDAHgAAAAAAAAAAADk/1cAAQAAAAAAAAAlAJj/AQAAAAAAAADkANf/AQAAAAAAAACjAJcAAQAAAAAAAADjAJYAAQAAAAAAAADk/5cAAQAAAAAAAADl/5j/AQAAAAAAAADkAJj/AQAAAAAAAAA=")
-tile_set = SubResource("TileSet_1gvwg")
 
 [node name="player" parent="." instance=ExtResource("2_dtwn4")]
 position = Vector2(736, 141)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(4, 3.0000012)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2(-140.99997, 736)
+rotation = -1.5707964
+stream = ExtResource("6_ocmas")
+volume_db = 10.0
+autoplay = true
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -51,10 +40,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -322.0
-offset_top = -71.0
-offset_right = -251.0
-offset_bottom = -48.0
+offset_left = -565.0
+offset_top = -236.0
+offset_right = -473.0
+offset_bottom = -204.66663
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(3, 3)
+
+[node name="background" parent="." instance=ExtResource("7_ocmas")]
+z_index = -1
+position = Vector2(-4613, 18042.996)
+scale = Vector2(25, 25)

@@ -13,10 +13,11 @@ extends Node2D
 @export var spawn_cooldown = 0.15
 @export var hj_drive: float = 0.0
 @export var hj_goal: float = 100.0
-@export var hj_th: float = 400.0
+@export var hj_th: float = 100.0
 @export var hj_gain: float = 50.0
 @export var hj_loss: float = 15.0
 @export var level: int = 1
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var char: CharacterBody2D = $player
 
@@ -79,10 +80,13 @@ func level_up():
 
 func update_hj_drive(delta: float) -> void:
 	var player_velo = char.velocity.length()
-	if player_velo >= hj_th:
+	if player_velo <= hj_th:
 		hj_drive += hj_gain * delta
 	else:
 		hj_drive -= hj_loss * delta
 	hj_drive = clamp(hj_drive, 0.0, hj_goal)
 	if hj_drive >= hj_goal:
 		level_up()
+
+# func reset_game():
+	
