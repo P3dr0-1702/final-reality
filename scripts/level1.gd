@@ -1,35 +1,59 @@
 extends Node2D
 
 @export var asteroid_scene: PackedScene = preload("res://scenes/asteroid.tscn")
-@export var spawn_max_radius : float = 1500
+@export var spawn_max_radius : float = 1000
 @export var player: Node2D
-@export var spawn_min_radius: float = 1000
-@export var speed_multiplier: int = 100
-@export var speed_range: int = 50
+@export var target_radius: float = 200
+@export var spawn_min_radius: float = 700
+@export var speed_multiplier: int = 500
+@export var speed_range: int = 100
 @export var asteroids = []
-@export var target_asteroids_near_player: int = 50
-@export var despawn_distance: float = 2000
+@export var target_asteroids_near_player: int = 100
+@export var despawn_distance: float = 1000
 @export var spawn_cooldown = 0.15
+@export var hj_drive: float = 0.0
+@export var hj_goal: float = 100.0
+@export var hj_th: float = 100.0
+@export var hj_gain: float = 50.0
+@export var hj_loss: float = 15.0
+@export var level: int = 1
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+@onready var char: CharacterBody2D = $player
+
+
 var _spawn_timer : float = 0.0
-# Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-#	for i in range(20):
-#		spawn_asteroid()
+var player_speed: int = 0
 
 func spawn_asteroid():
 	var asteroid = asteroid_scene.instantiate()
-	var angle = randf() * PI * 2
-	var s_angle = randf() * PI * 2
-	var distance = randf() * (spawn_max_radius - spawn_min_radius) + spawn_min_radius
+
+	# 1. Spawn point on outer ring
+	var spawn_angle = randf() * PI * 2
+	var spawn_distance = randf() * (spawn_max_radius - spawn_min_radius) + spawn_min_radius
+	var spawn_pos = player.global_position + Vector2(cos(spawn_angle), sin(spawn_angle)) * spawn_distance
+
+	# 2. Target point on inner ring (around player)
+	var target_angle = randf() * PI * 2
+	var target_pos = player.global_position + Vector2(cos(target_angle), sin(target_angle)) * target_radius
+
+	# 3. Direction from spawn → target
+	var direction = (target_pos - spawn_pos).normalized()
+
+	# 4. Speed
 	var speed_magnitude = randf() * speed_multiplier + speed_range
-	var velocity = Vector2(cos(s_angle), sin(s_angle)) * speed_magnitude
-	var start_pos = player.global_position + Vector2(cos(angle), sin(angle)) * distance
+	var velocity = direction * speed_magnitude
+
+	# 5. Type
 	var asteroid_type = randi() % 12
+
 	add_child(asteroid)
-	asteroid.setup(asteroid_type, start_pos, velocity)
+	asteroid.setup(asteroid_type, spawn_pos, velocity)
 	asteroids.append(asteroid)
 
+
 func _process(delta: float) -> void:
+	update_hj_drive(delta)
 	for asteroid in asteroids.duplicate():
 		if not is_instance_valid(asteroid):
 			asteroids.erase(asteroid)
@@ -41,5 +65,28 @@ func _process(delta: float) -> void:
 	if _spawn_timer <= 0.0  and asteroids.size() < target_asteroids_near_player:
 		spawn_asteroid()
 		_spawn_timer = spawn_cooldown
-	#while asteroids.size() < target_asteroids_near_player:
-	#	spawn_asteroid()
+
+
+func level_up():
+	level += 1
+	hj_drive = 0.0
+	
+	target_asteroids_near_player += 100
+	speed_multiplier += 100
+	hj_goal += 20
+	hj_gain += 2
+	print("Level Up!!!")
+	print(level)
+
+func update_hj_drive(delta: float) -> void:
+	var player_velo = char.velocity.length()
+	if player_velo <= hj_th:
+		hj_drive += hj_gain * delta
+	else:
+		hj_drive -= hj_loss * delta
+	hj_drive = clamp(hj_drive, 0.0, hj_goal)
+	if hj_drive >= hj_goal:
+		level_up()
+
+# func reset_game():
+	
